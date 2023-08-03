@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     TodoListContainer,
     TodoListSpan,
@@ -7,17 +7,34 @@ import {
 import TodoForm from "../TodoForm/TodoForm.tsx";
 import Todo from "../Todo/Todo.tsx";
 import {useMainTodo} from "../../context/TodoContext.tsx";
+import TodoSelect from "../TodoSelect/TodoSelect.tsx";
 
 const TodoList = () => {
     const {todos, todoCounter} = useMainTodo();
+    const [filter, setFilter] = useState('All');
+
+    const filteredTodo = todos.filter((todo) => {
+        if (filter === 'All') {
+            return todo;
+        } else if (filter === 'Completed') {
+            return todo.completed;
+        } else {
+            return !todo.completed;
+        }
+    });
 
     return (
-            <TodoListContainer>
-                <TodoListTitle>Todo List <span style={{color: todos.length > 0 ? 'green' : 'white'}}>{todoCounter}</span></TodoListTitle>
-                <TodoListSpan></TodoListSpan>
-                {todos.length === 0 ? <h2 style={{marginBlockEnd: '0.7rem'}}>Todo list is empty</h2> : todos.map((todo) => <Todo todo={todo}/>)}
-                <TodoForm/>
-            </TodoListContainer>
+        <TodoListContainer>
+            <TodoListTitle>Todo List <span
+                style={{color: todos.length > 0 ? 'green' : 'white'}}>{todoCounter}</span></TodoListTitle>
+            <TodoListSpan></TodoListSpan>
+            <TodoSelect filter={filter} setFilter={setFilter}/>
+            {todos.length === 0 ?
+                <h2 style={{marginBlockEnd: '0.7rem'}}>Todo list is
+                    empty</h2> : filteredTodo.map((todo) => <Todo
+                    todo={todo}/>)}
+            <TodoForm/>
+        </TodoListContainer>
     );
 };
 
