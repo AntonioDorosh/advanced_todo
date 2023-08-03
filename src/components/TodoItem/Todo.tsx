@@ -42,6 +42,7 @@ const Todo = ({todo}: TodoProps) => {
                             value={textValue}
                             type="text" placeholder={'edit task here'}/>
                         <TodoButtonStyled>Save</TodoButtonStyled>
+                        <TodoButtonStyled onClick={toggleForm}>Cancel</TodoButtonStyled>
                     </TodoFormStyled>
                 </>
             ) : (

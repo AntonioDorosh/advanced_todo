@@ -12,12 +12,12 @@ const TodoList = () => {
     const {todos} = useMainTodo();
 
     return (
-        <TodoListContainer>
-            <TodoListTitle>Todo List</TodoListTitle>
-            <TodoListSpan>React Todo List app</TodoListSpan>
-            {todos.map((todo) => <Todo todo={todo}/>)}
-            <TodoForm/>
-        </TodoListContainer>
+            <TodoListContainer>
+                <TodoListTitle>Todo List <span style={{color: todos.length > 0 ? 'green' : 'white'}}>{todos.length}</span></TodoListTitle>
+                <TodoListSpan>React Todo List app</TodoListSpan>
+                {todos.length === 0 ? <h2 style={{marginBlockEnd: '0.7rem'}}>Todo list is empty</h2> : todos.map((todo) => <Todo todo={todo}/>)}
+                <TodoForm/>
+            </TodoListContainer>
     );
 };
 

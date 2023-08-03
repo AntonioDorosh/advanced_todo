@@ -60,6 +60,7 @@ export const TodoButtonStyled = styled.button`
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
+  margin: 0 0.5rem 0 0;
   &:hover {
     background-color: #fff;
     color: #000000;
