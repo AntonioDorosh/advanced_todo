@@ -30,6 +30,7 @@ const Todo = ({todo}: TodoProps) => {
         event.preventDefault();
         editTodo(todo.id, textValue);
         toggleForm();
+        setTextValue('');
     }
 
     return (
