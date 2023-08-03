@@ -35,9 +35,8 @@ export const MainTodoProvider: FC<{
     }
 
     const removeTodo = (id: number) => {
-        if (todoCounter === 0) return;
         setTodos(todos.filter((todo) => todo.id !== id))
-        setTodoCounter(prevState => prevState - 1);
+        todoCounter > 0 ? setTodoCounter(prevState => prevState - 1) : setTodoCounter(0);
     }
 
     const completedTodo = (id: number, isDone: boolean) => {

@@ -14,12 +14,15 @@ const TodoList = () => {
     const [filter, setFilter] = useState('All');
 
     const filteredTodo = todos.filter((todo) => {
-        if (filter === 'All') {
-            return todo;
-        } else if (filter === 'Completed') {
-            return todo.completed;
-        } else {
-            return !todo.completed;
+        switch (filter) {
+            case 'All':
+                return todo;
+            case 'Completed':
+                return todo.completed;
+            case 'Pending':
+                return !todo.completed;
+            default:
+                return todo;
         }
     });
 
@@ -30,7 +33,7 @@ const TodoList = () => {
             <TodoListSpan></TodoListSpan>
             <TodoSelect filter={filter} setFilter={setFilter}/>
             {todos.length === 0 ?
-                <h2 style={{marginBlockEnd: '0.7rem'}}>Todo list is
+                <h2 style={{marginBlockEnd: '2rem'}}>Todo list is
                     empty</h2> : filteredTodo.map((todo) => <Todo
                     todo={todo}/>)}
             <TodoForm/>

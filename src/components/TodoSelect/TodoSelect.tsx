@@ -1,19 +1,23 @@
 import React from 'react';
+import {
+    TodoOptionStyled,
+    TodoSelectStyled
+} from "./styles/TodoSelect.styled.tsx";
 
 type TodoSelectProps = {
     filter: string;
     setFilter: (value: string) => void;
 }
 
-const TodoSelect = ({filter, setFilter} :TodoSelectProps) => {
+const TodoSelect = ({filter, setFilter}: TodoSelectProps) => {
     return (
         <>
-            <select value={filter}
+            <TodoSelectStyled value={filter}
                     onChange={(event) => setFilter(event.target.value)}>
-                <option value="All">All</option>
-                <option value="Pending">Pending</option>
-                <option value="Completed">Completed</option>
-            </select>
+                <TodoOptionStyled value="All">All</TodoOptionStyled>
+                <TodoOptionStyled value="Pending">Pending</TodoOptionStyled>
+                <TodoOptionStyled value="Completed">Completed</TodoOptionStyled>
+            </TodoSelectStyled>
         </>
     );
 };
