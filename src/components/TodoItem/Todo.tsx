@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import {
     TodoButtonStyled,
     TodoEditButton, TodoInput,
@@ -15,7 +15,7 @@ import {useMainTodo} from "../../context/TodoContext.tsx";
 import {TodoTypes} from "../../types/todo.types.ts";
 
 type TodoProps = {
-    todo: TodoTypes[]
+    todo: TodoTypes;
 }
 
 const Todo = ({todo}: TodoProps) => {
@@ -26,7 +26,7 @@ const Todo = ({todo}: TodoProps) => {
 
     const toggleForm = () => setIsEdit(!isEdit);
 
-    const handleUpdateTodo = (event) => {
+    const handleUpdateTodo = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         editTodo(todo.id, textValue);
         toggleForm();

@@ -12,7 +12,7 @@ const TodoValueContext = createContext({} as TodoInputContextTypes);
 export const useTodo = () => useContext(TodoValueContext);
 export const TodoProvider: FC<{
     children?: ReactNode | undefined
-}> = ({children}: React.ReactNode) => {
+}> = ({children}) => {
     const [inputValue, setInputValue] = useState<string>('');
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value);

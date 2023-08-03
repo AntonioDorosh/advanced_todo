@@ -13,16 +13,15 @@ const MainTodoContext = createContext({} as TodoContextTypes);
 export const useMainTodo = () => useContext(MainTodoContext);
 export const MainTodoProvider: FC<{
     children?: ReactNode | undefined
-}> = ({children}: React.ReactNode) => {
+}> = ({children}) => {
     const [todos, setTodos] = useState<TodoTypes[]>([]);
-
 
     console.log(todos, 'todos');
 
     const addTodo = (event: FormEvent<HTMLFormElement>, value: string) => {
         event.preventDefault();
 
-        if (!value) return alert('Please enter a value')
+        if (!value.trim()) return alert('Please enter a value')
 
         const newTask = {
             id: todos.length + 1,

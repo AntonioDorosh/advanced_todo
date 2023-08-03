@@ -34,7 +34,7 @@ export const TodoFormButton = styled.button`
   flex: 1 1 auto;
 
   &:hover {
-    background-color: #00FF00;
+    background-color: #58ac20;
     transition: 0.3s ease-in-out;
   }
 `
