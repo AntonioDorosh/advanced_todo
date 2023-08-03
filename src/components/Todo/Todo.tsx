@@ -42,7 +42,8 @@ const Todo = ({todo}: TodoProps) => {
                             value={textValue}
                             type="text" placeholder={'edit task here'}/>
                         <TodoButtonStyled>Save</TodoButtonStyled>
-                        <TodoButtonStyled onClick={toggleForm}>Cancel</TodoButtonStyled>
+                        <TodoButtonStyled
+                            onClick={toggleForm}>Cancel</TodoButtonStyled>
                     </TodoFormStyled>
                 </>
             ) : (
@@ -53,7 +54,7 @@ const Todo = ({todo}: TodoProps) => {
                         <TodoEditButton
                             onClick={toggleForm}><AiFillEdit/></TodoEditButton>
                         <TodoItemCheck
-                            onClick={() => completedTodo(todo.id)}><BiCheck/></TodoItemCheck>
+                            onClick={() => completedTodo(todo.id, todo.completed)}><BiCheck/></TodoItemCheck>
                         <TodoItemButton
                             onClick={() => removeTodo(todo.id)}><BiTrash/></TodoItemButton>
                     </li>

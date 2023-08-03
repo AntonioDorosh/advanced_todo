@@ -15,6 +15,7 @@ export const MainTodoProvider: FC<{
     children?: ReactNode | undefined
 }> = ({children}) => {
     const [todos, setTodos] = useState<TodoTypes[]>([]);
+    const [todoCounter, setTodoCounter] = useState<number>(0);
 
     console.log(todos, 'todos');
 
@@ -30,17 +31,22 @@ export const MainTodoProvider: FC<{
         };
 
         setTodos([...todos, newTask]);
+        setTodoCounter(prevState => prevState + 1);
     }
 
     const removeTodo = (id: number) => {
+        if (todoCounter === 0) return;
         setTodos(todos.filter((todo) => todo.id !== id))
+        setTodoCounter(prevState => prevState - 1);
     }
 
-    const completedTodo = (id: number) => {
+    const completedTodo = (id: number, isDone: boolean) => {
         setTodos(todos.map((todo) => todo.id === id ? {
             ...todo,
             completed: !todo.completed
         } : todo))
+
+        isDone ? setTodoCounter(prevState => prevState + 1) : setTodoCounter(prevState => prevState - 1);
     }
 
     const editTodo = (id: number, value: string) => {
@@ -57,7 +63,8 @@ export const MainTodoProvider: FC<{
         removeTodo,
         completedTodo,
         editTodo,
-        todos
+        todos,
+        todoCounter
     };
 
     return (
