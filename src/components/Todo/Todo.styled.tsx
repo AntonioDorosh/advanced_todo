@@ -9,7 +9,7 @@ export const TodoStyled = styled.ul`
 export const TodoItemUl = styled.ul`
   display: flex;
   list-style: none;
-    justify-content: space-between;
+  justify-content: space-between;
 `
 
 export const TodoItemButton = styled.button`
@@ -49,9 +49,9 @@ export const TodoEditButton = styled(TodoItemButton)`
 `
 
 export const TodoItemTitle = styled.h3<TodoTypes>`
-  text-decoration: ${({completed}) => completed ? 'line-through' : 'none'};
+  text-decoration: ${({completed}) => completed ? 'line-through #000' : 'none'};
   flex: 1;
-margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem 0;
 `
 
 export const TodoButtonStyled = styled.button`
@@ -63,6 +63,7 @@ export const TodoButtonStyled = styled.button`
   color: #fff;
   cursor: pointer;
   margin: 0 0.5rem 0 0;
+
   &:hover {
     background-color: #fff;
     color: #000000;
