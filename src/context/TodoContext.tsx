@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import {TodoTypes} from "../types/todo.types.ts";
 import {TodoContextTypes} from "../types/todocontext.types.ts";
-import {addToLocalStorage, removeFromLS} from "../Storage/storageData.ts";
+import {addToLocalStorage, removeFromLocalStorage} from "../Storage/storageData.ts";
 
 const MainTodoContext = createContext({} as TodoContextTypes);
 export const useMainTodo = () => useContext(MainTodoContext);
@@ -45,7 +45,7 @@ export const MainTodoProvider: FC<{
 
     const removeTodo = (id: number) => {
         setTodos(todos.filter((todo) => todo.id !== id))
-        removeFromLS()
+        removeFromLocalStorage()
     }
 
     const completedTodo = (id: number) => {

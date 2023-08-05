@@ -1,6 +1,6 @@
 import {TodoTypes} from "../types/todo.types.ts";
 
-const removeFromLS = () => {
+const removeFromLocalStorage = () => {
     localStorage.removeItem('todos');
 };
 
@@ -8,4 +8,4 @@ const addToLocalStorage = (arrayTodos: TodoTypes[]) => {
     localStorage.setItem('todos', JSON.stringify(arrayTodos));
 }
 
-export  {removeFromLS, addToLocalStorage};
+export {removeFromLocalStorage, addToLocalStorage};

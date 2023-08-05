@@ -25,7 +25,10 @@ const Todo = ({todo}: TodoProps) => {
     const [isEdit, setIsEdit] = useState<boolean>(false);
     const [textValue, setTextValue] = useState<string>('');
 
-    const toggleForm = () => setIsEdit(!isEdit);
+    const toggleForm = () => {
+        setIsEdit(!isEdit)
+        setTextValue('')  
+    };
 
     const handleUpdateTodo = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
