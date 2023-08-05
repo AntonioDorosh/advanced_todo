@@ -34,7 +34,6 @@ const Todo = ({todo}: TodoProps) => {
         setTextValue('');
     }
 
-
     return (
         <TodoStyled>
             {isEdit ? (

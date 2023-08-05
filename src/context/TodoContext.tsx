@@ -3,11 +3,12 @@ import React, {
     FC,
     FormEvent,
     ReactNode,
-    useContext,
+    useContext, useEffect,
     useState
 } from "react";
 import {TodoTypes} from "../types/todo.types.ts";
 import {TodoContextTypes} from "../types/todocontext.types.ts";
+import {addToLocalStorage, removeFromLS} from "../Storage/storageData.ts";
 
 const MainTodoContext = createContext({} as TodoContextTypes);
 export const useMainTodo = () => useContext(MainTodoContext);
@@ -15,7 +16,6 @@ export const MainTodoProvider: FC<{
     children?: ReactNode | undefined
 }> = ({children}) => {
     const [todos, setTodos] = useState<TodoTypes[]>([]);
-    const [todoCounter, setTodoCounter] = useState<number>(0);
 
     console.log(todos, 'todos');
 
@@ -33,21 +33,27 @@ export const MainTodoProvider: FC<{
         };
 
         setTodos([...todos, newTask]);
-        setTodoCounter(prevState => prevState + 1);
+        addToLocalStorage([...todos, newTask])
     }
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('todos');
+        if (storedData) {
+            setTodos(JSON.parse(storedData))
+        }
+    }, [])
 
     const removeTodo = (id: number) => {
         setTodos(todos.filter((todo) => todo.id !== id))
-        todoCounter > 0 ? setTodoCounter(prevState => prevState - 1) : setTodoCounter(0);
+        removeFromLS()
     }
 
-    const completedTodo = (id: number, isDone: boolean) => {
+    const completedTodo = (id: number) => {
         setTodos(todos.map((todo) => todo.id === id ? {
             ...todo,
             completed: !todo.completed
         } : todo))
 
-        isDone ? setTodoCounter(prevState => prevState + 1) : setTodoCounter(prevState => prevState - 1);
     }
 
     const editTodo = (id: number, value: string) => {
@@ -65,7 +71,6 @@ export const MainTodoProvider: FC<{
         completedTodo,
         editTodo,
         todos,
-        todoCounter,
     };
 
     return (

@@ -10,7 +10,7 @@ import {useMainTodo} from "../../context/TodoContext.tsx";
 import TodoSelect from "../TodoSelect/TodoSelect.tsx";
 
 const TodoList = () => {
-    const {todos, todoCounter} = useMainTodo();
+    const {todos} = useMainTodo();
     const [filter, setFilter] = useState('All');
 
     const filteredTodo = todos.filter((todo) => {
@@ -29,7 +29,7 @@ const TodoList = () => {
     return (
         <TodoListContainer>
             <TodoListTitle>Todo List <span
-                style={{color: todos.length > 0 ? 'green' : 'white'}}>{todoCounter}</span></TodoListTitle>
+                style={{color: todos.length > 0 ? 'green' : 'white'}}>{filteredTodo.length}</span></TodoListTitle>
             <TodoListSpan></TodoListSpan>
             <TodoSelect filter={filter} setFilter={setFilter}/>
             {todos.length === 0 ?

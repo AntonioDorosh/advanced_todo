@@ -7,5 +7,4 @@ export type TodoContextTypes = {
     completedTodo: (id: number, isDone: boolean) => void;
     editTodo: (id: number, value: string) => void;
     todos: TodoTypes[];
-    todoCounter: number;
 }
