@@ -9,6 +9,7 @@ export const TodoStyled = styled.ul`
 export const TodoItemUl = styled.ul`
   display: flex;
   list-style: none;
+    justify-content: space-between;
 `
 
 export const TodoItemButton = styled.button`
@@ -50,6 +51,7 @@ export const TodoEditButton = styled(TodoItemButton)`
 export const TodoItemTitle = styled.h3<TodoTypes>`
   text-decoration: ${({completed}) => completed ? 'line-through' : 'none'};
   flex: 1;
+margin: 0 0 0.5rem 0;
 `
 
 export const TodoButtonStyled = styled.button`

@@ -1,7 +1,8 @@
 import React, {FormEvent, useState} from 'react';
 import {
     TodoButtonStyled,
-    TodoEditButton, TodoInput,
+    TodoEditButton,
+    TodoInput,
     TodoItemButton,
     TodoItemCheck,
     TodoItemTitle,
@@ -33,6 +34,7 @@ const Todo = ({todo}: TodoProps) => {
         setTextValue('');
     }
 
+
     return (
         <TodoStyled>
             {isEdit ? (
@@ -49,8 +51,13 @@ const Todo = ({todo}: TodoProps) => {
                 </>
             ) : (
                 <TodoItemUl>
-                    <TodoItemTitle title={todo.title} id={todo.id}
-                                   completed={todo.completed}>{todo.title}</TodoItemTitle>
+                    <div>
+
+                        <TodoItemTitle title={todo.title} id={todo.id}
+                                       completed={todo.completed}
+                                       time={todo.time}>{todo.title}</TodoItemTitle>
+                        <span>{todo.time}</span>
+                    </div>
                     <li>
                         <TodoEditButton
                             onClick={toggleForm}><AiFillEdit/></TodoEditButton>

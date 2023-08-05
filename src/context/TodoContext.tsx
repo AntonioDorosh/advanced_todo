@@ -21,13 +21,15 @@ export const MainTodoProvider: FC<{
 
     const addTodo = (event: FormEvent<HTMLFormElement>, value: string) => {
         event.preventDefault();
+        const currentTime = new Date().toLocaleTimeString();
 
         if (!value.trim()) return alert('Please enter a value')
 
         const newTask = {
             id: todos.length + 1,
             title: value,
-            completed: false
+            completed: false,
+            time: currentTime
         };
 
         setTodos([...todos, newTask]);
@@ -63,7 +65,7 @@ export const MainTodoProvider: FC<{
         completedTodo,
         editTodo,
         todos,
-        todoCounter
+        todoCounter,
     };
 
     return (
