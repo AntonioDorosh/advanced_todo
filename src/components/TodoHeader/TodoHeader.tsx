@@ -8,12 +8,12 @@ import {
 } from "./styles/TodoHeader.styled.tsx";
 
 const TodoHeader = () => {
-    const {todos, todoCounter} = useMainTodo();
+    const {todos} = useMainTodo();
 
     return (
         <TodoHeaderContainer>
             <TodoListTitle>Todo List <span
-                style={{color: todos.length > 0 ? 'green' : 'white'}}>{todoCounter}</span></TodoListTitle>
+                style={{color: todos.length > 0 ? 'green' : 'white'}}>{todos.length}</span></TodoListTitle>
             <nav>
                 <TodoHeaderList>
                     <TodoHeaderListItem>All</TodoHeaderListItem>
