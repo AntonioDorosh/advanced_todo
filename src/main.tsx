@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import './index.css'
 import {TodoProvider} from "./context/TodoInputValue.tsx";
 import {MainTodoProvider} from "./context/TodoContext.tsx";
 import {createGlobalStyle} from "styled-components";
