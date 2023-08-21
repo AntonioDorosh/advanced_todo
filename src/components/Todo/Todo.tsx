@@ -27,11 +27,17 @@ const Todo = ({todo}: TodoProps) => {
 
     const toggleForm = () => {
         setIsEdit(!isEdit)
-        setTextValue('')  
+        setTextValue('')
     };
 
     const handleUpdateTodo = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        if (textValue === '') {
+            alert('Please enter a value');
+            return;
+        }
+
         editTodo(todo.id, textValue);
         toggleForm();
         setTextValue('');
