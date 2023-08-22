@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import {TodoTypes} from "../../types/todo.types.ts";
+
 
 export const TodoListContainer = styled.div`
   margin: 4rem auto;
@@ -10,8 +12,9 @@ export const TodoListContainer = styled.div`
 `
 
 export const TodoListTitle = styled.h1`
+
   margin: 0 0 0.2rem 0;
-  
+
   &:after {
     content: '';
     border-bottom: 1px solid #fff;
@@ -19,4 +22,8 @@ export const TodoListTitle = styled.h1`
     width: 100%;
     margin: 1rem 0;
   }
+`
+
+export const SpanStyled = styled.span<{ todos: TodoTypes[], color: string }>`
+  color: ${({todos, color}) => todos.length === 0 ? '#fff' : color};
 `

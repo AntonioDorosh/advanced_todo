@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
-import {TodoListContainer, TodoListTitle} from "./TodoList.styled.tsx";
+import {
+    SpanStyled,
+    TodoListContainer,
+    TodoListTitle
+} from "./TodoList.styled.tsx";
 import TodoForm from "../TodoForm/TodoForm.tsx";
 import Todo from "../Todo/Todo.tsx";
 import {useMainTodo} from "../../context/TodoContext.tsx";
@@ -24,8 +28,10 @@ const TodoList = () => {
 
     return (
         <TodoListContainer>
-            <TodoListTitle>Todo List <span
-                style={{color: todos.length > 0 ? 'green' : 'white'}}>{filteredTodo.length}</span></TodoListTitle>
+            <TodoListTitle>Todo List <SpanStyled color={'green'}
+                                                 todos={todos}>{filteredTodo.length}
+            </SpanStyled>
+            </TodoListTitle>
             <TodoSelect filter={filter} setFilter={setFilter}/>
             {todos.length === 0 ?
                 <h2 style={{marginBlockEnd: '2rem'}}>Todo list is
