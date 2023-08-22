@@ -6,7 +6,12 @@ import React, {
     useContext,
     useState
 } from "react";
-import {TodoInputContextTypes} from "../types/todo-input-context.types.ts";
+
+type TodoInputContextTypes = {
+    inputValue: string;
+    setInputValue: (text: string) => void;
+    onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
+}
 
 const TodoValueContext = createContext({} as TodoInputContextTypes);
 export const useTodo = () => useContext(TodoValueContext);

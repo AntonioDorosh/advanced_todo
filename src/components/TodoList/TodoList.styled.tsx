@@ -9,12 +9,14 @@ export const TodoListContainer = styled.div`
   box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, 0.1);
 `
 
-export const TodoListSpan = styled.span`
-  display: block;
-  border-bottom: 1px solid #fff;
-  margin: 0 0 2rem 0;
-`
-
 export const TodoListTitle = styled.h1`
   margin: 0 0 0.2rem 0;
+  
+  &:after {
+    content: '';
+    border-bottom: 1px solid #fff;
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+  }
 `

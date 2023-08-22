@@ -7,8 +7,18 @@ import React, {
     useState
 } from "react";
 import {TodoTypes} from "../types/todo.types.ts";
-import {TodoContextTypes} from "../types/todocontext.types.ts";
-import {addToLocalStorage, removeFromLocalStorage} from "../Storage/storageData.ts";
+import {
+    addToLocalStorage,
+    removeFromLocalStorage
+} from "../Storage/storageData.ts";
+
+type TodoContextTypes = {
+    addTodo: (event: FormEvent<HTMLFormElement>, value: string) => void;
+    removeTodo: (id: number) => void;
+    completedTodo: (id: number, isDone: boolean) => void;
+    editTodo: (id: number, value: string) => void;
+    todos: TodoTypes[];
+}
 
 const MainTodoContext = createContext({} as TodoContextTypes);
 export const useMainTodo = () => useContext(MainTodoContext);

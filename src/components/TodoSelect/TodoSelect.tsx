@@ -2,7 +2,7 @@ import React from 'react';
 import {
     TodoOptionStyled,
     TodoSelectStyled
-} from "./styles/TodoSelect.styled.tsx";
+} from "./TodoSelect.styled.tsx";
 
 type TodoSelectProps = {
     filter: string;

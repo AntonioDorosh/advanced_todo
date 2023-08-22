@@ -61,9 +61,7 @@ const Todo = ({todo}: TodoProps) => {
                 <TodoItemUl>
                     <div>
 
-                        <TodoItemTitle title={todo.title} id={todo.id}
-                                       completed={todo.completed}
-                                       time={todo.time}>{todo.title}</TodoItemTitle>
+                        <TodoItemTitle {...todo}>{todo.title}</TodoItemTitle>
                         <span>{todo.time}</span>
                     </div>
                     <li>
