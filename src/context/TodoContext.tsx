@@ -63,7 +63,6 @@ export const MainTodoProvider: FC<{
             ...todo,
             completed: !todo.completed
         } : todo))
-
     }
 
     const editTodo = (id: number, value: string) => {

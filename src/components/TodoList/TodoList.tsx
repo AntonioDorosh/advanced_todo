@@ -33,7 +33,7 @@ const TodoList = () => {
             </SpanStyled>
             </TodoListTitle>
             <TodoSelect filter={filter} setFilter={setFilter}/>
-            {todos.length === 0 ?
+            {!todos.length ?
                 <h2 style={{marginBlockEnd: '2rem'}}>Todo list is
                     empty</h2> : filteredTodo.map((todo) => <Todo
                     todo={todo}/>)}

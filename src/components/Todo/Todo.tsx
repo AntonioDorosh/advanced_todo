@@ -33,7 +33,7 @@ const Todo = ({todo}: TodoProps) => {
     const handleUpdateTodo = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (textValue === '') {
+        if (!textValue) {
             alert('Please enter a value');
             return;
         }
