@@ -50,8 +50,7 @@ const Todo = ({todo}: TodoProps) => {
                     <TodoFormStyled onSubmit={handleUpdateTodo}>
                         <TodoInput
                             onChange={(event) => setTextValue(event.target.value)}
-                            value={textValue}
-                            type="text" placeholder={'edit task here'}/>
+                            />
                         <TodoButtonStyled>Save</TodoButtonStyled>
                         <TodoButtonStyled
                             onClick={toggleForm}>Cancel</TodoButtonStyled>

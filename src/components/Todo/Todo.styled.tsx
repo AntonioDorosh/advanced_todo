@@ -35,7 +35,12 @@ export const TodoItemCheck = styled(TodoItemButton)`
   }
 `
 
-export const TodoInput = styled.input`
+
+export const TodoInput = styled.input.attrs(({value}) => ({
+    type: 'text',
+    placeholder: 'edit task',
+    value
+}))`
   padding: 0.5rem;
   margin: 0 0.5rem 0 0;
 `
