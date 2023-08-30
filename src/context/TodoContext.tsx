@@ -1,16 +1,8 @@
-import React, {
-    createContext,
-    FC,
-    FormEvent,
-    ReactNode,
-    useContext, useEffect,
-    useState
-} from "react";
+import React, {createContext, FormEvent, useContext, useState} from "react";
 import {TodoTypes} from "../types/todo.types.ts";
-import {
-    addToLocalStorage,
-    removeFromLocalStorage
-} from "../Storage/storageData.ts";
+import {TodoPropsProvider} from "../types/theme.ts";
+import {FilterTypes} from "../types/filter.types.ts";
+import {useLocalStorage} from "../hooks/useLocalStorage.ts";
 
 type TodoContextTypes = {
     addTodo: (event: FormEvent<HTMLFormElement>, value: string) => void;
@@ -18,16 +10,33 @@ type TodoContextTypes = {
     completedTodo: (id: number, isDone: boolean) => void;
     editTodo: (id: number, value: string) => void;
     todos: TodoTypes[];
+    filteredTodo: TodoTypes[];
+    filter: FilterTypes;
+    setFilter: (value: string) => void;
 }
 
 const MainTodoContext = createContext({} as TodoContextTypes);
 export const useMainTodo = () => useContext(MainTodoContext);
-export const MainTodoProvider: FC<{
-    children?: ReactNode | undefined
-}> = ({children}) => {
-    const [todos, setTodos] = useState<TodoTypes[]>([]);
+export const MainTodoProvider = ({children}: TodoPropsProvider) => {
+    const [todos, setTodos] = useLocalStorage<TodoTypes[]>(
+        'todos',
+        []
+    );
+    const [filter, setFilter] = useState<FilterTypes>(FilterTypes.All);
 
-    console.log(todos, 'todos');
+    const filteredTodo = todos.filter((todo) => {
+        switch (filter) {
+            case FilterTypes.All:
+                return todo;
+            case FilterTypes.Completed:
+                return todo.completed;
+            case FilterTypes.Pending:
+                return !todo.completed;
+            default:
+                return todo;
+        }
+    });
+
 
     const addTodo = (event: FormEvent<HTMLFormElement>, value: string) => {
         event.preventDefault();
@@ -43,19 +52,10 @@ export const MainTodoProvider: FC<{
         };
 
         setTodos([...todos, newTask]);
-        addToLocalStorage([...todos, newTask])
     }
-
-    useEffect(() => {
-        const storedData = localStorage.getItem('todos');
-        if (storedData) {
-            setTodos(JSON.parse(storedData))
-        }
-    }, [])
 
     const removeTodo = (id: number) => {
         setTodos(todos.filter((todo) => todo.id !== id))
-        removeFromLocalStorage()
     }
 
     const completedTodo = (id: number) => {
@@ -74,13 +74,19 @@ export const MainTodoProvider: FC<{
         setTodos(updatedTodo);
     }
 
+
     const mainTodoValues = {
         addTodo,
         removeTodo,
         completedTodo,
         editTodo,
         todos,
+        filteredTodo,
+        filter,
+        setFilter
     };
+
+    // todo fix setFilter
 
     return (
         <MainTodoContext.Provider value={mainTodoValues}>

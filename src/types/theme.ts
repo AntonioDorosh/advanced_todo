@@ -20,3 +20,7 @@ export interface ThemeContext {
     changeMode: (mode: Mode) => void;
     mode: Mode;
 }
+
+export type TodoPropsProvider = {
+    children: React.ReactNode
+}

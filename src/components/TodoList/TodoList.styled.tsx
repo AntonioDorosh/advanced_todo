@@ -12,7 +12,8 @@ export const TodoListContainer = styled.div`
 `
 
 export const TodoListTitle = styled.h1`
-  margin: 0 0 0.2rem 0;
+  margin: 0 0 0.5rem 0;
+  flex: 1 1 auto;
 `
 
 export const SpanStyled = styled.span<{ todos: TodoTypes[], color: string }>`
@@ -21,7 +22,6 @@ export const SpanStyled = styled.span<{ todos: TodoTypes[], color: string }>`
 
 export const ThemeButton = styled.button`
   border-radius: 8px;
-  padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

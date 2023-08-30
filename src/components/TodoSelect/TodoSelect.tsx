@@ -3,13 +3,11 @@ import {
     TodoOptionStyled,
     TodoSelectStyled
 } from "./TodoSelect.styled.tsx";
+import {useMainTodo} from "../../context/TodoContext.tsx";
 
-type TodoSelectProps = {
-    filter: string;
-    setFilter: (value: string) => void;
-}
+const TodoSelect = () => {
+    const { filter, setFilter } = useMainTodo();
 
-const TodoSelect = ({filter, setFilter}: TodoSelectProps) => {
     return (
         <>
             <TodoSelectStyled value={filter}
