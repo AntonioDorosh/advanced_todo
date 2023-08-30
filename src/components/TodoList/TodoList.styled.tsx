@@ -12,18 +12,25 @@ export const TodoListContainer = styled.div`
 `
 
 export const TodoListTitle = styled.h1`
-
   margin: 0 0 0.2rem 0;
-
-  &:after {
-    content: '';
-    border-bottom: 1px solid #fff;
-    display: block;
-    width: 100%;
-    margin: 1rem 0;
-  }
 `
 
 export const SpanStyled = styled.span<{ todos: TodoTypes[], color: string }>`
   color: ${({todos, color}) => todos.length === 0 ? '#fff' : color};
+`
+
+export const ThemeButton = styled.button`
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+
+  & > svg {
+    color: #FFF;
+  }
 `
